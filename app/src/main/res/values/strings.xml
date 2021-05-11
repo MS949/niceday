@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">좋은하루</string>
+    <string name="famous_saying">바쁜 자는 단지 마귀 하나로부터 유혹받지만,\n
+        한가로운 자는 수많은 마귀들로부터 유혹당한다</string>
 </resources>
