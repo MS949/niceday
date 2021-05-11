@@ -4,10 +4,20 @@
         android:id="@+id/page_1"
         android:enabled="true"
         android:icon="@drawable/abc_vector_test"
-        android:title="page_1" />
+        android:title="설정" />
     <item
         android:id="@+id/page_2"
         android:enabled="true"
         android:icon="@drawable/abc_vector_test"
-        android:title="page_2" />
+        android:title="타이틀" />
+    <item
+        android:id="@+id/page_3"
+        android:enabled="true"
+        android:icon="@drawable/abc_vector_test"
+        android:title="할 일 목록" />
+    <item
+        android:id="@+id/page_4"
+        android:enabled="true"
+        android:icon="@drawable/abc_vector_test"
+        android:title="계획표" />
 </menu>
