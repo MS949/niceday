@@ -2,51 +2,42 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/list_title"
+            android:id="@+id/success_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:text="할 일 목록"
+            android:text="완료 목록"
             android:textColor="@color/main_color"
             android:textSize="40sp"
             android:textStyle="bold" />
 
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/list_title"
+            android:layout_below="@+id/success_title"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="30dp"
+            android:text="지금까지 2개의 목표를 완료하였습니다!"
+            android:textColor="@color/main_color"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/list_create_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="생성" />
-
-            <Button
-                android:id="@+id/list_check_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:onClick="onClick"
-                android:text="완료 목록" />
-
-        </LinearLayout>
 
     </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,44 +57,18 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
-                    android:text="캐드 연습"
+                    android:text="방 청소"
                     android:textSize="30sp"
                     android:textStyle="bold" />
-
-                <Switch
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="30dp"
-                    android:text="2:32" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="25dp"
-                android:background="#abc">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="20dp"
-                    android:text="자격증 공부"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-
-                <Switch
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="30dp"
-                    android:text="5일" />
+                    android:text="2021/02/01"
+                    android:textSize="20sp" />
 
             </RelativeLayout>
 
@@ -120,22 +85,32 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
-                    android:text="독서"
+                    android:text="전공 공부"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
-                <Switch
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="30dp"
-                    android:text="12일" />
+                    android:text="2021/03/02"
+                    android:textSize="20sp" />
 
             </RelativeLayout>
 
         </LinearLayout>
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/success_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:onClick="backBtn"
+        android:text="뒤로가기" />
 
 </LinearLayout>
