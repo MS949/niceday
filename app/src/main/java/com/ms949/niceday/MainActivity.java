@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     MainFragment mainFragment = new MainFragment();
     SettingFragment settingFragment = new SettingFragment();
+    ListFragment listFragment = new ListFragment();
     FragmentManager fragmentManager = getSupportFragmentManager();
     FragmentTransaction transaction = fragmentManager.beginTransaction();
 
@@ -42,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     transaction.replace(R.id.frameLayout, mainFragment).commitAllowingStateLoss();
                     return true;
                 case R.id.page_3:
-//                    transaction.replace(R.id.frameLayout, mainFragment).commitAllowingStateLoss();
-                    showToast("page_3");
+                    transaction.replace(R.id.frameLayout, listFragment).commitAllowingStateLoss();
                     return true;
                 case R.id.page_4:
 //                    transaction.replace(R.id.frameLayout, mainFragment).commitAllowingStateLoss();
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     }
+
     void showToast(String msg) {
         Toast toast = Toast.makeText(this.getApplicationContext(), msg, Toast.LENGTH_SHORT);
         toast.show();
