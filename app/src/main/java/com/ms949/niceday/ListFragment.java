@@ -11,22 +11,35 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class ListFragment extends Fragment {
+public class ListFragment extends Fragment implements View.OnClickListener {
+
+    Intent intent;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.list_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_list, container, false);
 
         Button btn = view.findViewById(R.id.list_check_btn);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), SuccessActivity.class);
-                startActivity(intent);
-
-            }
-        });
+        btn.setOnClickListener(this);
+        Button btn2 = view.findViewById(R.id.list_create_btn);
+        btn2.setOnClickListener(this);
 
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.list_check_btn:
+                intent = new Intent(getActivity(), SuccessActivity.class);
+                startActivity(intent);
+                return;
+            case R.id.list_create_btn:
+                intent = new Intent(getActivity(), CreateActivity.class);
+                startActivity(intent);
+                return;
+
+        }
+
     }
 }
