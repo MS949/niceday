@@ -64,119 +64,146 @@
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_weight="0.5"
-            android:background="@drawable/setting_edittext"
+            android:background="@drawable/shape_setting_textview"
             android:hint="제목을 입력해주세요"
             android:inputType="text"
-            android:padding="5dp"
-            android:textSize="10sp" />
+            android:maxLength="11"
+            android:padding="10dp"
+            android:textSize="15sp" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linear3"
+    <RelativeLayout
+        android:id="@+id/relative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linear2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:layout_below="@id/linear2">
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/linear3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="일정"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/create_calender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/shape_setting_textview"
+                android:drawableRight="@drawable/layerlist_calendar"
+                android:onClick="onClick"
+                android:padding="10dp"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/create_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="일정"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:rotation="90"
+            android:thumb="@drawable/layerlist_thumb_switch"
+            android:track="@drawable/shape_track_switch" />
 
-        <TextView
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="0.5"
-            android:background="@drawable/setting_edittext"
-            android:padding="5dp"
-            android:textSize="10sp" />
+            android:layout_below="@id/linear3"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:weightSum="1">
 
-    </LinearLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/week_button0"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.1"
+                android:background="@drawable/shape_weekend_button"
+                android:text="일"
+                android:textColor="#FF0000"
+                android:textSize="15sp" />
 
-    <LinearLayout
-        android:id="@id/linear4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linear3"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:weightSum="1">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/week_button1"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.1"
+                android:background="@drawable/shape_weekend_button"
+                android:text="월"
+                android:textSize="15sp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="0.1"
-            android:background="@drawable/week_button"
-            android:text="일"
-            android:textColor="#FF0000"
-            android:textSize="15sp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/week_button2"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.1"
+                android:background="@drawable/shape_weekend_button"
+                android:text="화"
+                android:textSize="15sp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="0.1"
-            android:background="@drawable/week_button"
-            android:text="월"
-            android:textSize="15sp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/week_button3"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.1"
+                android:background="@drawable/shape_weekend_button"
+                android:text="수"
+                android:textSize="15sp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="0.1"
-            android:background="@drawable/week_button"
-            android:text="화"
-            android:textSize="15sp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/week_button4"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.1"
+                android:background="@drawable/shape_weekend_button"
+                android:text="목"
+                android:textSize="15sp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="0.1"
-            android:background="@drawable/week_button"
-            android:text="수"
-            android:textSize="15sp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/week_button5"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.1"
+                android:background="@drawable/shape_weekend_button"
+                android:text="금"
+                android:textSize="15sp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="0.1"
-            android:background="@drawable/week_button"
-            android:text="목"
-            android:textSize="15sp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/week_button6"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.1"
+                android:background="@drawable/shape_weekend_button"
+                android:text="토"
+                android:textColor="#0000FF"
+                android:textSize="15sp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="0.1"
-            android:background="@drawable/week_button"
-            android:text="금"
-            android:textSize="15sp" />
+        </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="0.1"
-            android:background="@drawable/week_button"
-            android:text="토"
-            android:textColor="#0000FF"
-            android:textSize="15sp" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_above="@+id/relativelayout"
-        android:layout_below="@+id/linear4"
+        android:layout_below="@+id/relative"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_margin="20dp"
@@ -194,10 +221,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/setting_edittext"
+            android:background="@drawable/shape_setting_textview"
             android:gravity="top"
             android:hint="내용을 입력해주세요(선택)"
-            android:padding="5dp" />
+            android:padding="10dp" />
 
     </LinearLayout>
 
@@ -209,16 +236,20 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/create_back_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:onClick="onClick"
             android:text="뒤로가기" />
 
         <Button
+            android:id="@+id/create_next_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
+            android:onClick="onClick"
             android:text="다음" />
 
     </RelativeLayout>
