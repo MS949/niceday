@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.좋은하루">
-        <activity android:name=".CreateActivity"></activity>
+        <activity android:name=".PenaltyActivity"></activity>
+        <activity android:name=".CreateActivity" />
         <activity android:name=".SuccessActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
