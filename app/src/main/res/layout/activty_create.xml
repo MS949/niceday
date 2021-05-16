@@ -108,8 +108,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:rotation="90"
-            android:thumb="@drawable/layerlist_thumb_switch"
-            android:track="@drawable/shape_track_switch" />
+            android:thumb="@drawable/layerlist_create_thumb_switch"
+            android:track="@drawable/shape_create_track_switch" />
 
         <LinearLayout
             android:layout_width="match_parent"

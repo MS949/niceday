@@ -1,47 +1,65 @@
 package com.ms949.niceday;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class SettingFragment extends Fragment {
+public class SettingFragment extends Fragment implements View.OnClickListener {
 
+    Intent intent = new Intent();
     Spinner spinner;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
+
         spinner = view.findViewById(R.id.spinner);
-        spinnerSelect();
+        spinnerListener();
+
+        Button applicationButton = view.findViewById(R.id.setting_application);
+        applicationButton.setOnClickListener(this);
+        ImageView googleImg = view.findViewById(R.id.google_play_image);
+        googleImg.setOnClickListener(this);
+        ImageView githubImg = view.findViewById(R.id.github_image);
+        githubImg.setOnClickListener(this);
+
+        Switch darkModeSwitch = view.findViewById(R.id.setting_dark_mode);
+        darkModeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                showToast("darkMode checked");
+            } else {
+                showToast("darkMode unchecked");
+            }
+        });
 
         return view;
     }
 
-    void spinnerSelect() {
-        String[] spinnerArray = "일정시간마다 경고,핸드폰 제한,아무것도 하지 않음".split(",");
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, spinnerArray);
+    void spinnerListener() {
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.spinner_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                showToast(spinnerArray[position]);
+                showToast(position + "");
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                showToast("null");
             }
         });
     }
@@ -51,4 +69,21 @@ public class SettingFragment extends Fragment {
         toast.show();
     }
 
+    @Override
+    public void onClick(View v) {
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+        switch (v.getId()) {
+            case R.id.setting_application:
+                showToast("application");
+                return;
+            case R.id.google_play_image:
+                intent.setData(Uri.parse("https://play.google.com/store"));
+                startActivity(intent);
+                return;
+            case R.id.github_image:
+                intent.setData(Uri.parse("https://github.com/MS949/niceday"));
+                startActivity(intent);
+        }
+    }
 }

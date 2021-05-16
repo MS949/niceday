@@ -3,5 +3,5 @@
     <item
         android:width="30dp"
         android:height="30dp"
-        android:drawable="@drawable/shape_thumb_switch" />
+        android:drawable="@drawable/shape_create_thumb_switch" />
 </layer-list>
