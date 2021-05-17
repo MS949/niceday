@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -22,7 +21,7 @@ import java.util.Date;
 public class CreateActivity extends AppCompatActivity implements View.OnClickListener {
 
     int[] btnId = {R.id.week_button0, R.id.week_button1, R.id.week_button2, R.id.week_button3, R.id.week_button4, R.id.week_button5, R.id.week_button6};
-    ToggleButton btn[] = new ToggleButton[7];
+    ToggleButton[] btn = new ToggleButton[7];
     ToggleButton toggleButton;
     SimpleDateFormat format;
     DatePickerDialog dialog;
@@ -41,42 +40,34 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
         createEditText = findViewById(R.id.create_edittext);
         createCalender = findViewById(R.id.create_calender);
         createSwitch = findViewById(R.id.create_switch);
-        createSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    for (int i = 0; i < btn.length; i++) {
-                        btn[i].setTextColor(Color.BLACK);
-                        btn[i].setEnabled(true);
-                    }
-                    btn[0].setTextColor(Color.RED);
-                    btn[6].setTextColor(Color.BLUE);
-                } else {
-                    for (int i = 0; i < btn.length; i++) {
-                        btn[i].setTextColor(Color.GRAY);
-                        btn[i].setEnabled(false);
-                    }
+        createSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                for (ToggleButton button : btn) {
+                    button.setTextColor(Color.BLACK);
+                    button.setEnabled(true);
                 }
-                createCalender.setText("");
+                btn[0].setTextColor(Color.RED);
+                btn[6].setTextColor(Color.BLUE);
+            } else {
+                for (ToggleButton button : btn) {
+                    button.setTextColor(Color.GRAY);
+                    button.setEnabled(false);
+                }
             }
+            createCalender.setText("");
         });
         createSwitch.setChecked(true);
 
         toggleButton = findViewById(R.id.create_toggle_btn);
-        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    for (int i = 0; i < btn.length; i++)
-                        btn[i].setVisibility(View.INVISIBLE);
-                    createSwitch.setVisibility(View.INVISIBLE);
-                } else {
-                    for (int i = 0; i < btn.length; i++)
-                        btn[i].setVisibility(View.VISIBLE);
-                    createSwitch.setVisibility(View.VISIBLE);
-                }
-                createCalender.setText("");
+        toggleButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                for (ToggleButton button : btn) button.setVisibility(View.INVISIBLE);
+                createSwitch.setVisibility(View.INVISIBLE);
+            } else {
+                for (ToggleButton button : btn) button.setVisibility(View.VISIBLE);
+                createSwitch.setVisibility(View.VISIBLE);
             }
+            createCalender.setText("");
         });
     }
 
@@ -102,6 +93,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
                     dialog.show();
                 }
                 return;
+
             case R.id.create_next_btn:
                 createEditText.setText(createEditText.getText().toString().trim());
                 if (TextUtils.isEmpty(createEditText.getText().toString())) {
@@ -119,9 +111,9 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
                         }
                     }
                 }
+
                 Intent intent = new Intent(this, PenaltyActivity.class);
                 startActivity(intent);
-
                 return;
             case R.id.create_back_btn:
                 finish();

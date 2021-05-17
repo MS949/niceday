@@ -1,3 +1,4 @@
+
 package com.ms949.niceday;
 
 import android.content.Intent;
@@ -37,9 +38,6 @@ public class ListFragment extends Fragment implements View.OnClickListener {
             case R.id.list_create_btn:
                 intent = new Intent(getActivity(), CreateActivity.class);
                 startActivity(intent);
-                return;
-
         }
-
     }
 }
