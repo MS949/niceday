@@ -52,12 +52,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:background="@android:color/darker_gray"
+            android:background="#e0e0e0"
             android:gravity="center"
             android:padding="10dp"
-            android:textColor="@android:color/holo_red_dark"
+            android:text="패널티를 두지 않습니다"
+            android:textColor="@color/main_color"
             android:textSize="25sp"
-            tools:text="1시간마다 경고알림" />
+            android:textStyle="bold" />
 
         <View
             android:layout_width="match_parent"
@@ -68,88 +69,100 @@
             android:background="#0d0d0d" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal">
+            android:id="@+id/penalty_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            tools:visibility="visible">
 
-            <TextView
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="개별설정"
-                android:textColor="@color/main_color"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
 
-            <Switch
-                android:id="@+id/penalty_overriding"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="개별설정"
+                    android:textColor="@color/main_color"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/penalty_overriding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:thumb="@drawable/shape_main_thumb_switch"
+                    android:track="@drawable/selector_main_track_switch" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:thumb="@drawable/shape_main_thumb_switch"
-                android:track="@drawable/selector_main_track_switch" />
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="일정 오버시"
+                    android:textColor="@color/main_color"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal">
+                <Spinner
+                    android:id="@+id/penalty_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:spinnerMode="dropdown"
+                    tools:listitem="@android:layout/simple_list_item_1" />
 
-            <TextView
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="일정 오버시"
-                android:textColor="@color/main_color"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-            <Spinner
-                android:id="@+id/penalty_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:spinnerMode="dropdown"
-                tools:listitem="@android:layout/simple_list_item_1" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="제한 할 어플리케이션"
+                    android:textColor="@color/main_color"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-        </LinearLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/penalty_application"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/main_button"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:onClick="onClick"
+                    android:text="설정"
+                    android:textColor="@color/back_ground_color"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="제한 할 어플리케이션"
-                android:textColor="@color/main_color"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/penalty_application"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/main_button"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:onClick="onClick"
-                android:text="설정"
-                android:textColor="@color/back_ground_color"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+            </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
+
 
     <RelativeLayout
         android:layout_width="wrap_content"

@@ -20,6 +20,8 @@ import java.util.Date;
 
 public class CreateActivity extends AppCompatActivity implements View.OnClickListener {
 
+    static CreateActivity createActivity;
+
     int[] btnId = {R.id.week_button0, R.id.week_button1, R.id.week_button2, R.id.week_button3, R.id.week_button4, R.id.week_button5, R.id.week_button6};
     ToggleButton[] btn = new ToggleButton[7];
     ToggleButton toggleButton;
@@ -37,6 +39,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
         for (int i = 0; i < btn.length; i++)
             btn[i] = findViewById(btnId[i]);
 
+        createActivity = CreateActivity.this;
         createEditText = findViewById(R.id.create_edittext);
         createCalender = findViewById(R.id.create_calender);
         createSwitch = findViewById(R.id.create_switch);
@@ -112,7 +115,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
                     }
                 }
 
-                Intent intent = new Intent(this, PenaltyActivity.class);
+                Intent intent = new Intent(CreateActivity.this, PenaltyActivity.class);
                 startActivity(intent);
                 return;
 

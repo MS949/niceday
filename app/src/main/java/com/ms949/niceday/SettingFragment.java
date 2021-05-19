@@ -62,7 +62,6 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
                 switch (position) {
                     case 0:
                     case 1:
-                    case 2:
                         showToast(position + "");
                 }
             }
