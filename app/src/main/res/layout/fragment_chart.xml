@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_ground_color"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="계획표"
+        android:textColor="@color/main_color"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/chart_circle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="25dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/circle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/shape_chart" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="12"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/circle"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:text="3"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:text="6"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/circle"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:text="9"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:gravity="center"
+        android:weightSum="10">
+
+        <ToggleButton
+            android:id="@+id/chart_button0"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_weekend_button"
+            android:textOff="일"
+            android:textOn="일"
+            android:textSize="15sp" />
+
+        <ToggleButton
+            android:id="@+id/chart_button1"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_weekend_button"
+            android:textOff="월"
+            android:textOn="월"
+            android:textSize="15sp" />
+
+        <ToggleButton
+            android:id="@+id/chart_button2"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_weekend_button"
+            android:textOff="화"
+            android:textOn="화"
+            android:textSize="15sp" />
+
+        <ToggleButton
+            android:id="@+id/chart_button3"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_weekend_button"
+            android:textOff="수"
+            android:textOn="수"
+            android:textSize="15sp" />
+
+        <ToggleButton
+            android:id="@+id/chart_button4"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_weekend_button"
+            android:textOff="목"
+            android:textOn="목"
+            android:textSize="15sp" />
+
+        <ToggleButton
+            android:id="@+id/chart_button5"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_weekend_button"
+            android:textOff="금"
+            android:textOn="금"
+            android:textSize="15sp" />
+
+        <ToggleButton
+            android:id="@+id/chart_button6"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_weekend_button"
+            android:textOff="토"
+            android:textOn="토"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

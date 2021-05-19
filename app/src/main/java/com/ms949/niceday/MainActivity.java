@@ -3,7 +3,6 @@ package com.ms949.niceday;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Window;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -19,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     SettingFragment settingFragment = new SettingFragment();
     MainFragment mainFragment = new MainFragment();
     ListFragment listFragment = new ListFragment();
+    ChartFragment chartFragment = new ChartFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 transaction.replace(R.id.frameLayout, listFragment).commitAllowingStateLoss();
                 return true;
             case R.id.page_4:
-//                    transaction.replace(R.id.frameLayout, mainFragment).commitAllowingStateLoss();
+                transaction.replace(R.id.frameLayout, chartFragment).commitAllowingStateLoss();
                 return true;
         }
         return false;

@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/back_ground_color">
 
     <TextView
         android:id="@+id/penalty_title"
@@ -127,7 +128,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/selector_weekend_button"
                 android:textOff="일"
-                android:textOn="ON"
+                android:textOn="일"
                 android:textSize="15sp" />
 
             <ToggleButton
@@ -190,7 +191,6 @@
                 android:textOn="토"
                 android:textSize="15sp" />
 
-
         </LinearLayout>
 
     </RelativeLayout>
@@ -238,7 +238,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:background="@drawable/main_button"
+            android:background="@drawable/shape_main_button"
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:onClick="onClick"
@@ -251,7 +251,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/main_button"
+            android:background="@drawable/shape_main_button"
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:onClick="onClick"

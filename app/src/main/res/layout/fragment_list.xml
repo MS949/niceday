@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/back_ground_color"
     android:orientation="vertical">
 
     <LinearLayout
@@ -29,7 +30,7 @@
                 android:id="@+id/list_create_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/main_button"
+                android:background="@drawable/shape_main_button"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:onClick="onClick"
@@ -41,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:background="@drawable/main_button"
+                android:background="@drawable/shape_main_button"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:onClick="onClick"
@@ -75,8 +76,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="20dp"
-                    android:textColor="@color/back_ground_color"
                     android:text="캐드 연습"
+                    android:textColor="@color/back_ground_color"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
