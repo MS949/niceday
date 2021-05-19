@@ -1,172 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/penalty_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="패널티 설정"
-        android:textColor="@color/main_color"
-        android:textSize="40sp"
-        android:textStyle="bold" />
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/penalty_linear1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/penalty_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="패널티 실행하기"
+            android:layout_marginTop="50dp"
+            android:text="패널티 설정"
             android:textColor="@color/main_color"
-            android:textSize="20sp"
+            android:textSize="40sp"
             android:textStyle="bold" />
 
-        <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/penalty_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/penalty_linear1"
-        android:layout_margin="20dp"
-        android:background="@android:color/darker_gray"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="1시간마다 경고알림"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="25sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/penalty_textview"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="30dp"
-        android:background="#0d0d0d" />
-
-    <LinearLayout
-        android:id="@+id/penalty_linear2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/penalty_textview"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="개별설정"
-            android:textColor="@color/main_color"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-        <Switch
-            android:id="@+id/penalty_overriding"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="패널티 실행하기"
+                android:textColor="@color/main_color"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+            <Switch
+                android:id="@+id/penalty_launch_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:thumb="@drawable/shape_main_thumb_switch"
+                android:track="@drawable/selector_main_track_switch" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/penalty_textview"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="일정 오버시"
-            android:textColor="@color/main_color"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:dropDownWidth="200dp"
-            android:spinnerMode="dropdown"></Spinner>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/penalty_textview"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="150dp"
-        android:orientation="horizontal">
+        </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/penalty_textview"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="제한 할 어플리케이션"
-            android:textColor="@color/main_color"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_margin="20dp"
+            android:background="@android:color/darker_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="25sp"
+            tools:text="1시간마다 경고알림" />
 
-        <Button
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:background="#0d0d0d" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="설정"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="개별설정"
+                android:textColor="@color/main_color"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Switch
+                android:id="@+id/penalty_overriding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:thumb="@drawable/shape_main_thumb_switch"
+                android:track="@drawable/selector_main_track_switch" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="일정 오버시"
+                android:textColor="@color/main_color"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/penalty_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:spinnerMode="dropdown"
+                tools:listitem="@android:layout/simple_list_item_1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="제한 할 어플리케이션"
+                android:textColor="@color/main_color"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/penalty_application"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/main_button"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:onClick="onClick"
+                android:text="설정"
+                android:textColor="@color/back_ground_color"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
         android:orientation="horizontal">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/penalty_back_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/main_button"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
             android:onClick="onClick"
-            android:text="뒤로가기" />
+            android:text="뒤로가기"
+            android:textColor="@color/back_ground_color"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/penalty_next_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/main_button"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
             android:onClick="onClick"
-            android:text="다음" />
+            android:text="다음"
+            android:textColor="@color/back_ground_color"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
-</RelativeLayout>
+</LinearLayout>

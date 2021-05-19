@@ -32,7 +32,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activty_create);
+        setContentView(R.layout.activity_create);
 
         for (int i = 0; i < btn.length; i++)
             btn[i] = findViewById(btnId[i]);
@@ -115,6 +115,7 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
                 Intent intent = new Intent(this, PenaltyActivity.class);
                 startActivity(intent);
                 return;
+
             case R.id.create_back_btn:
                 finish();
         }
@@ -126,7 +127,6 @@ public class CreateActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     void showToast(String msg) {
-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
-        toast.show();
+        Toast.makeText(CreateActivity.this, msg, Toast.LENGTH_SHORT).show();
     }
 }

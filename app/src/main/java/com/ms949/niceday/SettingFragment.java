@@ -25,7 +25,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
 
-        spinner = view.findViewById(R.id.spinner);
+        spinner = view.findViewById(R.id.setting_spinner);
         spinnerListener();
 
         Button applicationButton = view.findViewById(R.id.setting_application);
@@ -47,6 +47,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
+    void showToast(String msg) {
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    }
+
     void spinnerListener() {
         ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.spinner_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -55,18 +59,18 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                showToast(position + "");
+                switch (position) {
+                    case 0:
+                    case 1:
+                    case 2:
+                        showToast(position + "");
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-    }
-
-    void showToast(String msg) {
-        Toast toast = Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT);
-        toast.show();
     }
 
     @Override

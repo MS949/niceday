@@ -47,14 +47,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
             case R.id.page_4:
 //                    transaction.replace(R.id.frameLayout, mainFragment).commitAllowingStateLoss();
-                showToast("page_4");
                 return true;
         }
         return false;
-    }
-
-    void showToast(String msg) {
-        Toast toast = Toast.makeText(this.getApplicationContext(), msg, Toast.LENGTH_SHORT);
-        toast.show();
     }
 }
