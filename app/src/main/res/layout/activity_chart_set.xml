@@ -1,74 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/back_ground_color"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:text="할 일 생성"
-        android:textColor="@color/main_color"
-        android:textSize="40sp"
-        android:textStyle="bold" />
-
-
-    <ToggleButton
-        android:id="@+id/create_toggle_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:onClick="onClick"
-        android:textOff="반복"
-        android:textOn="단번" />
-
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="제목"
-            android:textSize="20sp"
+            android:layout_marginTop="50dp"
+            android:text="계획표 설정"
+            android:textColor="@color/main_color"
+            android:textSize="40sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/create_edittext"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_weight="0.5"
-            android:background="@drawable/shape_setting_textview"
-            android:hint="제목을 입력해주세요"
-            android:inputType="text"
-            android:maxLength="11"
-            android:padding="10dp"
-            android:textSize="15sp" />
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
         <LinearLayout
-            android:id="@+id/create_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="1">
@@ -77,38 +34,68 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="일정"
+                android:text="타입"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/create_calender"
-                android:layout_width="0dp"
+            <Spinner
+                android:id="@+id/chart_set_spinner"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/shape_setting_textview"
-                android:onClick="onClick"
-                android:padding="10dp"
-                android:textSize="15sp"
-                app:drawableEndCompat="@drawable/layerlist_calendar" />
+                android:layout_marginStart="10dp"
+                android:spinnerMode="dropdown"
+                tools:listitem="@android:layout/simple_list_item_1" />
 
         </LinearLayout>
 
-        <Switch
-            android:id="@+id/create_switch"
+        <CheckBox
+            android:id="@+id/chart_set_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:rotation="90"
-            android:thumb="@drawable/shape_main_thumb_switch"
-            android:track="@drawable/shape_create_track_switch" />
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="취침시간에 핸드폰 차단"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="시간 설정"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/chart_set_time_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/timer_icon" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="요일 설정"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/create_linear"
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:weightSum="10">
@@ -185,34 +172,6 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:text="상세 내용"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/shape_setting_textview"
-            android:gravity="top"
-            android:hint="내용을 입력해주세요(선택)"
-            android:inputType="none"
-            android:padding="10dp" />
-
     </LinearLayout>
 
     <RelativeLayout
@@ -222,7 +181,7 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/create_back_btn"
+            android:id="@+id/chart_set_back_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -234,7 +193,7 @@
             android:textColor="@color/back_ground_color" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/create_next_btn"
+            android:id="@+id/chart_set_next_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

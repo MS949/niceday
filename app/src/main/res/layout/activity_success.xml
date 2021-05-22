@@ -105,13 +105,17 @@
 
     </ScrollView>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/success_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_main_button"
+        android:maxHeight="0dp"
+        android:minHeight="0dp"
         android:onClick="backBtn"
-        android:text="뒤로가기" />
+        android:text="뒤로가기"
+        android:textColor="@color/back_ground_color" />
 
 </LinearLayout>
