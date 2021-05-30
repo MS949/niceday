@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:thumb="@drawable/shape_main_thumb_switch"
+                android:thumb="@drawable/layerlist_main_thumb_switch"
                 android:track="@drawable/selector_main_track_switch" />
 
         </LinearLayout>
@@ -76,7 +76,6 @@
             android:visibility="invisible"
             tools:visibility="visible">
 
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -97,7 +96,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:thumb="@drawable/shape_main_thumb_switch"
+                    android:thumb="@drawable/layerlist_main_thumb_switch"
                     android:track="@drawable/selector_main_track_switch" />
 
             </LinearLayout>
@@ -148,7 +147,7 @@
                     android:id="@+id/penalty_application"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape_main_button"
+                    android:background="@drawable/selector_main_button"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:onClick="onClick"
@@ -175,7 +174,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:background="@drawable/shape_main_button"
+            android:background="@drawable/selector_main_button"
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:onClick="onClick"
@@ -190,7 +189,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/shape_main_button"
+            android:background="@drawable/selector_main_button"
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:onClick="onClick"

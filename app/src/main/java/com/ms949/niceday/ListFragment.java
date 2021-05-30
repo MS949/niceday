@@ -1,20 +1,13 @@
 
 package com.ms949.niceday;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-public class ListFragment extends Fragment implements View.OnClickListener {
-
-    Intent intent;
+public class ListFragment extends BaseFrameFragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,12 +25,10 @@ public class ListFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.list_check_btn:
-                intent = new Intent(getActivity(), SuccessActivity.class);
-                startActivity(intent);
+                showActivity(SuccessActivity.class);
                 return;
             case R.id.list_create_btn:
-                intent = new Intent(getActivity(), CreateActivity.class);
-                startActivity(intent);
+                showActivity(CreateActivity.class);
         }
     }
 }

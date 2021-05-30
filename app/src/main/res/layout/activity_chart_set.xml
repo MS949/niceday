@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/back_ground_color"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ChartSetActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,29 +61,18 @@
             android:text="취침시간에 핸드폰 차단"
             android:textSize="20sp" />
 
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="30dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="시간 설정"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/chart_set_time_setting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/timer_icon" />
-
-        </LinearLayout>
+            android:layout_marginTop="30dp"
+            android:drawablePadding="20dp"
+            android:gravity="center"
+            android:text="시간 설정"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:drawableEndCompat="@drawable/timer_icon" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -101,73 +92,73 @@
             android:weightSum="10">
 
             <ToggleButton
-                android:id="@+id/week_button0"
+                android:id="@+id/chart_set_week_button0"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_weekend_button"
-                android:textOff="일"
-                android:textOn="일"
+                android:textOff="@string/sun"
+                android:textOn="@string/sun"
                 android:textSize="15sp" />
 
             <ToggleButton
-                android:id="@+id/week_button1"
+                android:id="@+id/chart_set_week_button1"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_weekend_button"
-                android:textOff="월"
-                android:textOn="월"
+                android:textOff="@string/mon"
+                android:textOn="@string/mon"
                 android:textSize="15sp" />
 
             <ToggleButton
-                android:id="@+id/week_button2"
+                android:id="@+id/chart_set_week_button2"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_weekend_button"
-                android:textOff="화"
-                android:textOn="화"
+                android:textOff="@string/tue"
+                android:textOn="@string/tue"
                 android:textSize="15sp" />
 
             <ToggleButton
-                android:id="@+id/week_button3"
+                android:id="@+id/chart_set_week_button3"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_weekend_button"
-                android:textOff="수"
-                android:textOn="수"
+                android:textOff="@string/wed"
+                android:textOn="@string/wed"
                 android:textSize="15sp" />
 
             <ToggleButton
-                android:id="@+id/week_button4"
+                android:id="@+id/chart_set_week_button4"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_weekend_button"
-                android:textOff="목"
-                android:textOn="목"
+                android:textOff="@string/thu"
+                android:textOn="@string/thu"
                 android:textSize="15sp" />
 
             <ToggleButton
-                android:id="@+id/week_button5"
+                android:id="@+id/chart_set_week_button5"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_weekend_button"
-                android:textOff="금"
-                android:textOn="금"
+                android:textOff="@string/fri"
+                android:textOn="@string/fri"
                 android:textSize="15sp" />
 
             <ToggleButton
-                android:id="@+id/week_button6"
+                android:id="@+id/chart_set_week_button6"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_weekend_button"
-                android:textOff="토"
-                android:textOn="토"
+                android:textOff="@string/sat"
+                android:textOn="@string/sat"
                 android:textSize="15sp" />
 
         </LinearLayout>
@@ -185,7 +176,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:background="@drawable/shape_main_button"
+            android:background="@drawable/selector_main_button"
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:onClick="onClick"
@@ -198,7 +189,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/shape_main_button"
+            android:background="@drawable/selector_main_button"
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:onClick="onClick"

@@ -6,15 +6,15 @@
     android:background="@color/back_ground_color"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/success_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:text="완료 목록"
             android:textColor="@color/main_color"
@@ -22,18 +22,17 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/success_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/success_title"
-            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:textColor="@color/main_color"
             android:textSize="20sp"
             android:textStyle="bold"
-            tools:text="0개의 할 일이 남아있습니다." />
+            tools:text="0개의 할 일을 완료했습니다" />
 
-
-    </RelativeLayout>
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,67 +40,10 @@
         android:layout_weight="1">
 
         <LinearLayout
+            android:id="@+id/success_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="25dp"
-                android:background="@color/main_color">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="20dp"
-                    android:text="방 청소"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="30dp"
-                    android:text="2021/02/01"
-                    android:textSize="20sp" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="25dp"
-                android:background="@color/purple_700">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="20dp"
-                    android:text="전공 공부"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="30dp"
-                    android:text="2021/03/02"
-                    android:textSize="20sp" />
-
-            </RelativeLayout>
-
-        </LinearLayout>
+            android:orientation="vertical" />
 
     </ScrollView>
 
@@ -111,11 +53,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:background="@drawable/shape_main_button"
+        android:background="@drawable/selector_main_button"
         android:maxHeight="0dp"
         android:minHeight="0dp"
-        android:onClick="backBtn"
         android:text="뒤로가기"
         android:textColor="@color/back_ground_color" />
-
 </LinearLayout>

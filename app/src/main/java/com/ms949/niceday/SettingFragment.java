@@ -7,33 +7,42 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
-
-public class SettingFragment extends Fragment implements View.OnClickListener {
+public class SettingFragment extends BaseFrameFragment implements View.OnClickListener {
 
     Intent intent = new Intent();
     Spinner spinner;
+
+    boolean initial;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
 
         spinner = view.findViewById(R.id.setting_spinner);
-        spinnerListener();
+        spinner = spinnerSetting(spinner, R.array.spinner_array);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (initial) {
+                    switch (position) {
+                        case 0:
+                        case 1:
+                            showToast(position + "");
+                    }
+                } else {
+                    initial = true;
+                }
+            }
 
-        Button applicationButton = view.findViewById(R.id.setting_application);
-        applicationButton.setOnClickListener(this);
-        ImageView googleImg = view.findViewById(R.id.google_play_image);
-        googleImg.setOnClickListener(this);
-        ImageView githubImg = view.findViewById(R.id.github_image);
-        githubImg.setOnClickListener(this);
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         Switch darkModeSwitch = view.findViewById(R.id.setting_dark_mode);
         darkModeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -44,32 +53,14 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+        Button applicationButton = view.findViewById(R.id.setting_application);
+        applicationButton.setOnClickListener(this);
+        ImageView googleImg = view.findViewById(R.id.google_play_image);
+        googleImg.setOnClickListener(this);
+        ImageView githubImg = view.findViewById(R.id.github_image);
+        githubImg.setOnClickListener(this);
+
         return view;
-    }
-
-    void showToast(String msg) {
-        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
-    }
-
-    void spinnerListener() {
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), R.array.spinner_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                    case 1:
-                        showToast(position + "");
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
     }
 
     @Override

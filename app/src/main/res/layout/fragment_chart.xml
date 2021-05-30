@@ -15,72 +15,16 @@
         android:textSize="40sp"
         android:textStyle="bold" />
 
-    <RelativeLayout
-        android:id="@+id/chart_circle"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="25dp"
-        android:layout_weight="1">
-
-        <ImageView
-            android:id="@+id/circle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:adjustViewBounds="true"
-            android:src="@drawable/shape_chart" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:text="12"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@id/circle"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="5dp"
-            android:text="3"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="5dp"
-            android:text="6"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/circle"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="5dp"
-            android:text="9"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="25dp"
         android:gravity="center"
+        android:orientation="horizontal"
         android:weightSum="10">
 
         <ToggleButton
-            android:id="@+id/chart_button0"
+            android:id="@+id/chart_week_button0"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
@@ -90,7 +34,7 @@
             android:textSize="15sp" />
 
         <ToggleButton
-            android:id="@+id/chart_button1"
+            android:id="@+id/chart_week_button1"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
@@ -100,7 +44,7 @@
             android:textSize="15sp" />
 
         <ToggleButton
-            android:id="@+id/chart_button2"
+            android:id="@+id/chart_week_button2"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
@@ -110,7 +54,7 @@
             android:textSize="15sp" />
 
         <ToggleButton
-            android:id="@+id/chart_button3"
+            android:id="@+id/chart_week_button3"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
@@ -120,7 +64,7 @@
             android:textSize="15sp" />
 
         <ToggleButton
-            android:id="@+id/chart_button4"
+            android:id="@+id/chart_week_button4"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
@@ -130,7 +74,7 @@
             android:textSize="15sp" />
 
         <ToggleButton
-            android:id="@+id/chart_button5"
+            android:id="@+id/chart_week_button5"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
@@ -140,7 +84,7 @@
             android:textSize="15sp" />
 
         <ToggleButton
-            android:id="@+id/chart_button6"
+            android:id="@+id/chart_week_button6"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
@@ -150,5 +94,64 @@
             android:textSize="15sp" />
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_margin="25dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/chart_circle"
+            android:layout_width="359dp"
+            android:layout_height="369dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="2dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/shape_chart" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/chart_circle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="12"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/chart_circle"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:text="3"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/chart_circle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="7dp"
+            android:text="6"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/chart_circle"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:text="9"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 
 </LinearLayout>

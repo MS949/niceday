@@ -2,18 +2,14 @@ package com.ms949.niceday;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.Window;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseFrameActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    FragmentManager fragmentManager = getSupportFragmentManager();
-    FragmentTransaction transaction = fragmentManager.beginTransaction();
+    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
     SettingFragment settingFragment = new SettingFragment();
     MainFragment mainFragment = new MainFragment();
@@ -23,10 +19,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         transaction.replace(R.id.frameLayout, mainFragment).commitAllowingStateLoss();
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_view);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.page_2);
@@ -34,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        transaction = fragmentManager.beginTransaction();
+        transaction = getSupportFragmentManager().beginTransaction();
         switch (item.getItemId()) {
             case R.id.page_1:
                 transaction.replace(R.id.frameLayout, settingFragment).commitAllowingStateLoss();

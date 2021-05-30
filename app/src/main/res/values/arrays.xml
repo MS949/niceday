@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_array">
+        <item>
+            "일정시간마다 경고"
+        </item>
+        <item>
+            "핸드폰 제한"
+        </item>
+    </string-array>
+
+    <string-array name="chart_set">
+        <item>
+            취침
+        </item>
+        <item>
+            자유시간
+        </item>
+        <item>
+            작업시간
+        </item>
+    </string-array>
+
+    <string-array name="famous_saying">
+        <item>
+            "바쁜 자는 단지 마귀 하나로부터 유혹받지만,\n한가로운 자는 수많은 마귀들로부터 유혹당한다."
+        </item>
+        <item>
+            "실패가 나태함에 대한 유일한 징벌은 아니다.\n다른 이들의 성공도 있지 않은가."
+        </item>
+        <item>
+            "우리가 계획한 삶을 기꺼이 버릴 수 있을 때만,\n우리를 기다리고 있는 삶을 맞이할 수 있다."
+        </item>
+        <item>
+            "지금 적극적으로 실행되는 괜찮은 계획이\n다음 주의 완벽한 계획보다 낫다."
+        </item>
+        <item>
+            "나는 신실하지 않으며,\n심지어 이렇게 말하는 이 순간에도 그렇다."
+        </item>
+        <item>
+            "무얼하든 주의 깊게 하라, 그리고 목표를 바라보라."
+        </item>
+        <item>
+            "무위라는 상태는 게으르지만 기분 좋기도 하다."
+        </item>
+        <item>
+            "혁명은 다 익어 저절로 떨어지는 사과가 아니다.\n떨어뜨려야 하는 것이다."
+        </item>
+        <item>
+            "춤추는 별을 잉태하려면 반드시 스스로의\n내면에 혼돈을 지녀야 한다."
+        </item>
+        <item>
+            "수정을 용납하지 않는 계획은 나쁜 계획이다."
+        </item>
+        <item>
+            "오늘 누군가가 그늘에 앉아 쉴 수 있는 이유는\n오래 전에 누군가가 나무를 심었기 때문이다."
+        </item>
+        <item>
+            "개선이란 무언가가 좋지 않다고 느낄 수 있는\n사람들에 의해서만 만들어질 수 있다."
+        </item>
+        <item>
+            "도전은 인생을 흥미롭게 만들며,\n도전의 극복이 인생을 의미있게 한다."
+        </item>
+    </string-array>
+</resources>

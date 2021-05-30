@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.좋은하루">
-        <activity android:name=".ChartSetActivity"></activity>
+        <activity android:name=".ChartSetActivity" />
         <activity android:name=".PenaltyActivity" />
         <activity android:name=".CreateActivity" />
         <activity android:name=".SuccessActivity" />
