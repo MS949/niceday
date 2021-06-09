@@ -20,12 +20,14 @@
 
 
     <ToggleButton
-        android:id="@+id/create_once_or_regular"
+        android:id="@+id/create_regular_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ripple_regular_button"
         android:onClick="onClick"
+        android:textColor="@color/black"
         android:textOff="반복"
         android:textOn="단번" />
 
@@ -43,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="제목"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -52,11 +55,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_weight="0.5"
-            android:background="@drawable/shape_setting_textview"
+            android:background="@drawable/shape_setting_textview_true"
             android:hint="제목을 입력해주세요"
             android:inputType="text"
             android:maxLength="11"
             android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@android:color/darker_gray"
             android:textSize="15sp" />
 
     </LinearLayout>
@@ -80,6 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="일정"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -89,12 +95,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/shape_setting_textview"
+                android:background="@drawable/shape_setting_textview_false"
                 android:onClick="onClick"
                 android:padding="10dp"
+                android:textColor="@color/black"
                 android:textSize="15sp"
                 app:drawableEndCompat="@drawable/layerlist_calendar" />
-
         </LinearLayout>
 
         <Switch
@@ -120,7 +126,7 @@
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:background="@drawable/selector_weekend_button"
+                android:background="@drawable/ripple_weekend_button"
                 android:textOff="@string/sun"
                 android:textOn="@string/sun"
                 android:textSize="15sp" />
@@ -130,7 +136,7 @@
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:background="@drawable/selector_weekend_button"
+                android:background="@drawable/ripple_weekend_button"
                 android:textOff="@string/mon"
                 android:textOn="@string/mon"
                 android:textSize="15sp" />
@@ -140,7 +146,7 @@
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:background="@drawable/selector_weekend_button"
+                android:background="@drawable/ripple_weekend_button"
                 android:textOff="@string/tue"
                 android:textOn="@string/tue"
                 android:textSize="15sp" />
@@ -150,7 +156,7 @@
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:background="@drawable/selector_weekend_button"
+                android:background="@drawable/ripple_weekend_button"
                 android:textOff="@string/wed"
                 android:textOn="@string/wed"
                 android:textSize="15sp" />
@@ -160,7 +166,7 @@
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:background="@drawable/selector_weekend_button"
+                android:background="@drawable/ripple_weekend_button"
                 android:textOff="@string/thu"
                 android:textOn="@string/thu"
                 android:textSize="15sp" />
@@ -170,7 +176,7 @@
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:background="@drawable/selector_weekend_button"
+                android:background="@drawable/ripple_weekend_button"
                 android:textOff="@string/fri"
                 android:textOn="@string/fri"
                 android:textSize="15sp" />
@@ -180,7 +186,7 @@
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:background="@drawable/selector_weekend_button"
+                android:background="@drawable/ripple_weekend_button"
                 android:textOff="@string/sat"
                 android:textOn="@string/sat"
                 android:textSize="15sp" />
@@ -202,6 +208,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:text="상세 내용"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -209,11 +216,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
-            android:background="@drawable/shape_setting_textview"
+            android:background="@drawable/shape_setting_textview_true"
             android:gravity="top"
             android:hint="내용을 입력해주세요(선택)"
             android:inputType="none"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@android:color/darker_gray" />
 
     </LinearLayout>
 
@@ -228,7 +237,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:background="@drawable/selector_main_button"
+            android:background="@drawable/ripple_main_button"
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:onClick="onClick"
@@ -241,7 +250,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/selector_main_button"
+            android:background="@drawable/ripple_main_button"
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:onClick="onClick"

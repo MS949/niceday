@@ -16,10 +16,6 @@ import androidx.core.content.ContextCompat;
 public class PenaltyActivity extends BaseFrameActivity implements View.OnClickListener {
 
     AlertDialog alertDialog;
-    TextView penaltyTextView;
-    Switch overridingSwitch;
-    Button applicationBtn;
-    LinearLayout layout;
     Spinner spinner;
     boolean initial;
 
@@ -28,9 +24,9 @@ public class PenaltyActivity extends BaseFrameActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_penalty);
 
-        penaltyTextView = findViewById(R.id.penalty_textview);
-        applicationBtn = findViewById(R.id.penalty_application);
-        layout = findViewById(R.id.penalty_layout);
+        TextView penaltyTextView = findViewById(R.id.penalty_textview);
+        Button applicationBtn = findViewById(R.id.penalty_application);
+        LinearLayout layout = findViewById(R.id.penalty_layout);
 
         alertDialog();  // 다음 눌렀을 때 확인 알림
 
@@ -56,6 +52,20 @@ public class PenaltyActivity extends BaseFrameActivity implements View.OnClickLi
             }
         });
 
+        Switch overridingSwitch = findViewById(R.id.penalty_overriding);
+        overridingSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {    // 개별설정
+                penaltyTextView.setText(spinner.getSelectedItem().toString());
+                applicationBtn.setEnabled(true);
+                spinner.setEnabled(true);
+            } else {            // 개별설정 안함
+                penaltyTextView.setText("Basic Penalty");
+                applicationBtn.setEnabled(false);
+                spinner.setEnabled(false);
+            }
+        });
+        applicationBtn.setEnabled(false);
+
         Switch launchSwitch = findViewById(R.id.penalty_launch_switch);
         launchSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {    // 패널티 실행
@@ -70,19 +80,6 @@ public class PenaltyActivity extends BaseFrameActivity implements View.OnClickLi
             }
         });
 
-        overridingSwitch = findViewById(R.id.penalty_overriding);
-        overridingSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {    // 개별설정
-                penaltyTextView.setText(spinner.getSelectedItem().toString());
-                applicationBtn.setEnabled(true);
-                spinner.setEnabled(true);
-            } else {            // 개별설정 안함
-                penaltyTextView.setText("Basic Penalty");
-                applicationBtn.setEnabled(false);
-                spinner.setEnabled(false);
-            }
-        });
-        applicationBtn.setEnabled(false);
     }
 
     void alertDialog() {

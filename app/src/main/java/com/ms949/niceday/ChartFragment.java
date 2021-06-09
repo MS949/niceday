@@ -34,8 +34,6 @@ public class ChartFragment extends BaseFrameFragment implements CompoundButton.O
             btn[i].setOnCheckedChangeListener(this);
         }
         btn[getDate("u") == 7 ? 0 : getDate("u")].setChecked(true);
-        btn[0].setTextColor(Color.RED);
-        btn[6].setTextColor(Color.BLUE);
 
         return view;
     }

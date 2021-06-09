@@ -18,7 +18,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="10">
@@ -28,7 +28,8 @@
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
-            android:background="@drawable/selector_weekend_button"
+            android:background="@drawable/ripple_weekend_button"
+            android:textColor="@android:color/holo_red_dark"
             android:textOff="일"
             android:textOn="일"
             android:textSize="15sp" />
@@ -38,7 +39,8 @@
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
-            android:background="@drawable/selector_weekend_button"
+            android:background="@drawable/ripple_weekend_button"
+            android:textColor="@color/black"
             android:textOff="월"
             android:textOn="월"
             android:textSize="15sp" />
@@ -48,7 +50,8 @@
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
-            android:background="@drawable/selector_weekend_button"
+            android:background="@drawable/ripple_weekend_button"
+            android:textColor="@color/black"
             android:textOff="화"
             android:textOn="화"
             android:textSize="15sp" />
@@ -58,7 +61,8 @@
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
-            android:background="@drawable/selector_weekend_button"
+            android:background="@drawable/ripple_weekend_button"
+            android:textColor="@color/black"
             android:textOff="수"
             android:textOn="수"
             android:textSize="15sp" />
@@ -68,7 +72,8 @@
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
-            android:background="@drawable/selector_weekend_button"
+            android:background="@drawable/ripple_weekend_button"
+            android:textColor="@color/black"
             android:textOff="목"
             android:textOn="목"
             android:textSize="15sp" />
@@ -78,7 +83,8 @@
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
-            android:background="@drawable/selector_weekend_button"
+            android:background="@drawable/ripple_weekend_button"
+            android:textColor="@color/black"
             android:textOff="금"
             android:textOn="금"
             android:textSize="15sp" />
@@ -88,7 +94,8 @@
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_weight="1"
-            android:background="@drawable/selector_weekend_button"
+            android:background="@drawable/ripple_weekend_button"
+            android:textColor="@android:color/holo_blue_dark"
             android:textOff="토"
             android:textOn="토"
             android:textSize="15sp" />
@@ -98,13 +105,16 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_margin="25dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="50dp"
         android:layout_weight="1">
 
         <ImageView
             android:id="@+id/chart_circle"
-            android:layout_width="359dp"
-            android:layout_height="369dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="2dp"
@@ -118,6 +128,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:text="12"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -128,6 +139,7 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="5dp"
             android:text="3"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -139,6 +151,7 @@
             android:layout_marginBottom="7dp"
             android:text="6"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -149,6 +162,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="5dp"
             android:text="9"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 

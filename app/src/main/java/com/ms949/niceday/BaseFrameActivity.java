@@ -20,7 +20,7 @@ public class BaseFrameActivity extends AppCompatActivity {
     }
 
     Spinner spinnerSetting(Spinner spinner, int textArrayResId) {
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(getApplicationContext(), textArrayResId, android.R.layout.simple_spinner_item);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(getApplicationContext(), textArrayResId, R.layout.custom_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 

@@ -131,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -147,7 +147,7 @@
                     android:id="@+id/penalty_application"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/selector_main_button"
+                    android:background="@drawable/ripple_main_button"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
                     android:onClick="onClick"
@@ -174,7 +174,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:background="@drawable/selector_main_button"
+            android:background="@drawable/ripple_main_button"
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:onClick="onClick"
@@ -189,7 +189,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/selector_main_button"
+            android:background="@drawable/ripple_main_button"
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:onClick="onClick"

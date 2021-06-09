@@ -12,6 +12,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import androidx.core.content.ContextCompat;
+
 public class CreateActivity extends BaseFrameActivity implements View.OnClickListener {
 
     static CreateActivity createActivity;
@@ -26,9 +28,7 @@ public class CreateActivity extends BaseFrameActivity implements View.OnClickLis
             R.id.create_week_button6
     };
     ToggleButton[] btn = new ToggleButton[7];
-    DatePickerDialog datePickerDialog;
-    TimePickerDialog timePickerDialog;
-    ToggleButton onceOrRegularBtn;
+    ToggleButton RegularBtn;
     EditText setTitleEditText;
     TextView calenderEditText;
     Switch weekOrCalenderSwitch;
@@ -53,6 +53,7 @@ public class CreateActivity extends BaseFrameActivity implements View.OnClickLis
                     button.setChecked(false);
                     button.setEnabled(true);
                 }
+                calenderEditText.setBackground(ContextCompat.getDrawable(CreateActivity.this, R.drawable.shape_setting_textview_false));
                 calenderEditText.setEnabled(false);
                 btn[0].setTextColor(Color.RED);
                 btn[6].setTextColor(Color.BLUE);
@@ -63,23 +64,24 @@ public class CreateActivity extends BaseFrameActivity implements View.OnClickLis
                     button.setChecked(false);
                     button.setEnabled(false);
                 }
+                calenderEditText.setBackground(ContextCompat.getDrawable(CreateActivity.this, R.drawable.shape_setting_textview_true));
                 calenderEditText.setEnabled(true);
             }
             calenderEditText.setText("");
         });
         weekOrCalenderSwitch.setChecked(true); // 액티비티 실행시 이벤트 실행
 
-        onceOrRegularBtn = findViewById(R.id.create_once_or_regular);
-        onceOrRegularBtn.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        RegularBtn = findViewById(R.id.create_regular_button);
+        RegularBtn.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {    // 단번
                 for (ToggleButton button : btn) button.setVisibility(View.INVISIBLE);
                 weekOrCalenderSwitch.setVisibility(View.INVISIBLE);
-                calenderEditText.setEnabled(true);
+                weekOrCalenderSwitch.setChecked(false);
 
             } else {            // 반복
                 for (ToggleButton button : btn) button.setVisibility(View.VISIBLE);
                 weekOrCalenderSwitch.setVisibility(View.VISIBLE);
-                if (!onceOrRegularBtn.isChecked()) calenderEditText.setEnabled(false);
+                weekOrCalenderSwitch.setChecked(false);
             }
             calenderEditText.setText("");
         });
@@ -89,18 +91,19 @@ public class CreateActivity extends BaseFrameActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.create_calender:
-                datePickerDialog = new DatePickerDialog(CreateActivity.this, (view, year, month, dayOfMonth) -> {
-                    if (onceOrRegularBtn.isChecked()) { // 단번
-                        timePickerDialog = new TimePickerDialog(CreateActivity.this, (view1, hourOfDay, minute) -> {
-                            calenderEditText.setText(String.format("%d / %d / %d %02d : %02d", year, month, dayOfMonth, hourOfDay, minute));
+                DatePickerDialog datePickerDialog = new DatePickerDialog(CreateActivity.this, (view, year, month, dayOfMonth) -> {
+                    if (RegularBtn.isChecked()) { // 단번
+                        TimePickerDialog timePickerDialog = new TimePickerDialog(CreateActivity.this, (view1, hourOfDay, minute) -> {
+                            calenderEditText.setText(String.format("%d / %d / %d %02d : %02d", year, month + 1, dayOfMonth, hourOfDay, minute));
                         }, 0, 0, false);
                         timePickerDialog.setCancelable(false);
                         timePickerDialog.show();
                     } else {                            // 반복
-                        calenderEditText.setText(String.format("%d / %d / %d", year, month, dayOfMonth));
+                        calenderEditText.setText(String.format("%d / %d / %d", year, month + 1, dayOfMonth));
                     }
-                }, getDate("yyyy"), getDate("MM"), getDate("dd"));
+                }, getDate("yyyy"), getDate("MM") - 1, getDate("dd"));
                 datePickerDialog.setCancelable(false);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
                 datePickerDialog.show();
                 return;
 
@@ -112,7 +115,7 @@ public class CreateActivity extends BaseFrameActivity implements View.OnClickLis
                 }
 
                 if (TextUtils.isEmpty(calenderEditText.getText().toString())) { // 일정이 비어있을 때
-                    if (weekOrCalenderSwitch.isChecked() && !onceOrRegularBtn.isChecked()) {    // 주말버튼
+                    if (weekOrCalenderSwitch.isChecked() && !RegularBtn.isChecked()) {    // 주말버튼
                         for (int i = 0; i < btn.length; i++) {
                             if (btn[i].isChecked()) break;
                             if (i == btn.length - 1) {                          // 하나도 안눌려졌을때

@@ -21,7 +21,7 @@ public class BaseFrameFragment extends Fragment {
     }
 
     Spinner spinnerSetting(Spinner spinner, int textArrayResId) {
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), textArrayResId, android.R.layout.simple_spinner_item);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(), textArrayResId, R.layout.custom_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 

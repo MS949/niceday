@@ -1,13 +1,15 @@
 package com.ms949.niceday;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
-public class ChartSetActivity extends BaseFrameActivity {
+public class ChartSetActivity extends BaseFrameActivity implements CompoundButton.OnCheckedChangeListener {
 
     int[] btnId = {
             R.id.chart_set_week_button0,
@@ -26,10 +28,21 @@ public class ChartSetActivity extends BaseFrameActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart_set);
 
-        for (int i = 0; i < btn.length; i++)
+        for (int i = 0; i < btn.length; i++) {
             btn[i] = findViewById(btnId[i]);
-        btn[0].setTextColor(Color.RED);
-        btn[6].setTextColor(Color.BLUE);
+            btn[i].setOnCheckedChangeListener(this);
+        }
+        btn[getDate("u") == 7 ? 0 : getDate("u")].setChecked(true);
+
+        CheckBox sleepPhone = findViewById(R.id.chart_set_sleep_phone);
+        sleepPhone.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            showToast("sleepPhone " + isChecked + "");
+        });
+
+        TextView timeSet = findViewById(R.id.chart_set_time_set);
+        timeSet.setOnClickListener(v -> {
+            showToast("timeSet Clicked");
+        });
 
         Spinner spinner = findViewById(R.id.chart_set_spinner);
         spinner = spinnerSetting(spinner, R.array.chart_set);
@@ -61,6 +74,20 @@ public class ChartSetActivity extends BaseFrameActivity {
 
             case R.id.chart_set_back_btn:
                 finish();
+        }
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked) {
+            for (int i = 0; i < btn.length; i++) {
+                if (buttonView.getId() == btnId[i]) {
+                    btn[i].setEnabled(false);
+                    continue;
+                }
+                btn[i].setChecked(false);
+                btn[i].setEnabled(true);
+            }
         }
     }
 }

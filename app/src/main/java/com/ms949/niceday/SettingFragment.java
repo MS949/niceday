@@ -15,15 +15,13 @@ import android.widget.Switch;
 public class SettingFragment extends BaseFrameFragment implements View.OnClickListener {
 
     Intent intent = new Intent();
-    Spinner spinner;
-
     boolean initial;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
 
-        spinner = view.findViewById(R.id.setting_spinner);
+        Spinner spinner = view.findViewById(R.id.setting_spinner);
         spinner = spinnerSetting(spinner, R.array.spinner_array);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -32,7 +30,7 @@ public class SettingFragment extends BaseFrameFragment implements View.OnClickLi
                     switch (position) {
                         case 0:
                         case 1:
-                            showToast(position + "");
+                            showToast(position + " position");
                     }
                 } else {
                     initial = true;

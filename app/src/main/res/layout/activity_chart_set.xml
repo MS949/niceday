@@ -52,16 +52,18 @@
         </LinearLayout>
 
         <CheckBox
-            android:id="@+id/chart_set_checkbox"
+            android:id="@+id/chart_set_sleep_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="취침시간에 핸드폰 차단"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/chart_set_time_set"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
@@ -96,7 +98,8 @@
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:background="@drawable/selector_weekend_button"
+                android:background="@drawable/ripple_weekend_button"
+                android:textColor="@android:color/holo_red_dark"
                 android:textOff="@string/sun"
                 android:textOn="@string/sun"
                 android:textSize="15sp" />
@@ -106,7 +109,8 @@
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:background="@drawable/selector_weekend_button"
+                android:background="@drawable/ripple_weekend_button"
+                android:textColor="@color/black"
                 android:textOff="@string/mon"
                 android:textOn="@string/mon"
                 android:textSize="15sp" />
@@ -116,7 +120,8 @@
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:background="@drawable/selector_weekend_button"
+                android:background="@drawable/ripple_weekend_button"
+                android:textColor="@color/black"
                 android:textOff="@string/tue"
                 android:textOn="@string/tue"
                 android:textSize="15sp" />
@@ -126,7 +131,8 @@
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:background="@drawable/selector_weekend_button"
+                android:background="@drawable/ripple_weekend_button"
+                android:textColor="@color/black"
                 android:textOff="@string/wed"
                 android:textOn="@string/wed"
                 android:textSize="15sp" />
@@ -136,7 +142,8 @@
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:background="@drawable/selector_weekend_button"
+                android:background="@drawable/ripple_weekend_button"
+                android:textColor="@color/black"
                 android:textOff="@string/thu"
                 android:textOn="@string/thu"
                 android:textSize="15sp" />
@@ -146,7 +153,8 @@
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:background="@drawable/selector_weekend_button"
+                android:background="@drawable/ripple_weekend_button"
+                android:textColor="@color/black"
                 android:textOff="@string/fri"
                 android:textOn="@string/fri"
                 android:textSize="15sp" />
@@ -156,7 +164,8 @@
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:background="@drawable/selector_weekend_button"
+                android:background="@drawable/ripple_weekend_button"
+                android:textColor="@android:color/holo_blue_dark"
                 android:textOff="@string/sat"
                 android:textOn="@string/sat"
                 android:textSize="15sp" />
@@ -176,7 +185,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:background="@drawable/selector_main_button"
+            android:background="@drawable/ripple_main_button"
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:onClick="onClick"
@@ -189,7 +198,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/selector_main_button"
+            android:background="@drawable/ripple_main_button"
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:onClick="onClick"
