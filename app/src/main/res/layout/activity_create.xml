@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_weight="0.5"
-            android:background="@drawable/shape_setting_textview_true"
+            android:background="@drawable/shape_setting_textview"
             android:hint="제목을 입력해주세요"
             android:inputType="text"
             android:maxLength="11"
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_weight="0.5"
-                android:background="@drawable/shape_setting_textview_false"
+                android:background="@drawable/shape_setting_textview"
                 android:onClick="onClick"
                 android:padding="10dp"
                 android:textColor="@color/black"
@@ -213,10 +213,11 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/create_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
-            android:background="@drawable/shape_setting_textview_true"
+            android:background="@drawable/shape_setting_textview"
             android:gravity="top"
             android:hint="내용을 입력해주세요(선택)"
             android:inputType="none"

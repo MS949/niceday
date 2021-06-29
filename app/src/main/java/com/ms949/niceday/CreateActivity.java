@@ -12,8 +12,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import androidx.core.content.ContextCompat;
-
 public class CreateActivity extends BaseFrameActivity implements View.OnClickListener {
 
     static CreateActivity createActivity;
@@ -28,7 +26,7 @@ public class CreateActivity extends BaseFrameActivity implements View.OnClickLis
             R.id.create_week_button6
     };
     ToggleButton[] btn = new ToggleButton[7];
-    ToggleButton RegularBtn;
+    ToggleButton regularBtn;
     EditText setTitleEditText;
     TextView calenderEditText;
     Switch weekOrCalenderSwitch;
@@ -53,7 +51,6 @@ public class CreateActivity extends BaseFrameActivity implements View.OnClickLis
                     button.setChecked(false);
                     button.setEnabled(true);
                 }
-                calenderEditText.setBackground(ContextCompat.getDrawable(CreateActivity.this, R.drawable.shape_setting_textview_false));
                 calenderEditText.setEnabled(false);
                 btn[0].setTextColor(Color.RED);
                 btn[6].setTextColor(Color.BLUE);
@@ -64,25 +61,23 @@ public class CreateActivity extends BaseFrameActivity implements View.OnClickLis
                     button.setChecked(false);
                     button.setEnabled(false);
                 }
-                calenderEditText.setBackground(ContextCompat.getDrawable(CreateActivity.this, R.drawable.shape_setting_textview_true));
                 calenderEditText.setEnabled(true);
             }
             calenderEditText.setText("");
         });
         weekOrCalenderSwitch.setChecked(true); // 액티비티 실행시 이벤트 실행
 
-        RegularBtn = findViewById(R.id.create_regular_button);
-        RegularBtn.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        regularBtn = findViewById(R.id.create_regular_button);
+        regularBtn.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {    // 단번
                 for (ToggleButton button : btn) button.setVisibility(View.INVISIBLE);
                 weekOrCalenderSwitch.setVisibility(View.INVISIBLE);
-                weekOrCalenderSwitch.setChecked(false);
 
             } else {            // 반복
                 for (ToggleButton button : btn) button.setVisibility(View.VISIBLE);
                 weekOrCalenderSwitch.setVisibility(View.VISIBLE);
-                weekOrCalenderSwitch.setChecked(false);
             }
+            weekOrCalenderSwitch.setChecked(false);
             calenderEditText.setText("");
         });
     }
@@ -92,7 +87,7 @@ public class CreateActivity extends BaseFrameActivity implements View.OnClickLis
         switch (v.getId()) {
             case R.id.create_calender:
                 DatePickerDialog datePickerDialog = new DatePickerDialog(CreateActivity.this, (view, year, month, dayOfMonth) -> {
-                    if (RegularBtn.isChecked()) { // 단번
+                    if (regularBtn.isChecked()) { // 단번
                         TimePickerDialog timePickerDialog = new TimePickerDialog(CreateActivity.this, (view1, hourOfDay, minute) -> {
                             calenderEditText.setText(String.format("%d / %d / %d %02d : %02d", year, month + 1, dayOfMonth, hourOfDay, minute));
                         }, 0, 0, false);
@@ -115,7 +110,7 @@ public class CreateActivity extends BaseFrameActivity implements View.OnClickLis
                 }
 
                 if (TextUtils.isEmpty(calenderEditText.getText().toString())) { // 일정이 비어있을 때
-                    if (weekOrCalenderSwitch.isChecked() && !RegularBtn.isChecked()) {    // 주말버튼
+                    if (weekOrCalenderSwitch.isChecked() && !regularBtn.isChecked()) {    // 주말버튼
                         for (int i = 0; i < btn.length; i++) {
                             if (btn[i].isChecked()) break;
                             if (i == btn.length - 1) {                          // 하나도 안눌려졌을때
@@ -128,10 +123,26 @@ public class CreateActivity extends BaseFrameActivity implements View.OnClickLis
                         return;
                     }
                 }
+                EditText regularEditText = findViewById(R.id.create_content);
+
                 Intent intent = new Intent(CreateActivity.this, PenaltyActivity.class);
+
+                intent.putExtra("title", setTitleEditText.getText().toString());
+                intent.putExtra("content", regularEditText.getText().toString());
+                intent.putExtra("regular", regularBtn.isChecked() ? "1" : "0");
+                intent.putExtra("week_or_calender", weekOrCalenderSwitch.isChecked() ? "1" : "0");
+                intent.putExtra("calender", calenderEditText.getText().toString());
+
+                intent.putExtra("sun", btn[0].isChecked() ? "1" : "0");
+                intent.putExtra("mon", btn[1].isChecked() ? "1" : "0");
+                intent.putExtra("tue", btn[2].isChecked() ? "1" : "0");
+                intent.putExtra("wed", btn[3].isChecked() ? "1" : "0");
+                intent.putExtra("thu", btn[4].isChecked() ? "1" : "0");
+                intent.putExtra("fri", btn[5].isChecked() ? "1" : "0");
+                intent.putExtra("sat", btn[6].isChecked() ? "1" : "0");
+
                 startActivity(intent);
                 return;
-
             case R.id.create_back_btn:
                 finish();
         }

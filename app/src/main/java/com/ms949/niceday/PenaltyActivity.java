@@ -1,5 +1,8 @@
 package com.ms949.niceday;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +18,11 @@ import androidx.core.content.ContextCompat;
 
 public class PenaltyActivity extends BaseFrameActivity implements View.OnClickListener {
 
+    SQLiteDatabase db;
+
     AlertDialog alertDialog;
+    Switch overridingSwitch;
+    Switch launchSwitch;
     Spinner spinner;
     boolean initial;
 
@@ -27,8 +34,6 @@ public class PenaltyActivity extends BaseFrameActivity implements View.OnClickLi
         TextView penaltyTextView = findViewById(R.id.penalty_textview);
         Button applicationBtn = findViewById(R.id.penalty_application);
         LinearLayout layout = findViewById(R.id.penalty_layout);
-
-        alertDialog();  // 다음 눌렀을 때 확인 알림
 
         spinner = findViewById(R.id.penalty_spinner);
         spinner = spinnerSetting(spinner, R.array.spinner_array);
@@ -52,7 +57,21 @@ public class PenaltyActivity extends BaseFrameActivity implements View.OnClickLi
             }
         });
 
-        Switch overridingSwitch = findViewById(R.id.penalty_overriding);
+        launchSwitch = findViewById(R.id.penalty_launch_switch);
+        launchSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {    // 패널티 실행
+                penaltyTextView.setText("기본설정 패널티");
+                penaltyTextView.setTextColor(Color.RED);
+                layout.setVisibility(View.VISIBLE);
+            } else {            // 패널티 실행 안함
+                penaltyTextView.setTextColor(ContextCompat.getColor(PenaltyActivity.this, R.color.main_color));
+                penaltyTextView.setText("패널티를 두지 않습니다");
+                layout.setVisibility(View.INVISIBLE);
+                overridingSwitch.setChecked(false);
+            }
+        });
+
+        overridingSwitch = findViewById(R.id.penalty_overriding);
         overridingSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {    // 개별설정
                 penaltyTextView.setText(spinner.getSelectedItem().toString());
@@ -66,27 +85,54 @@ public class PenaltyActivity extends BaseFrameActivity implements View.OnClickLi
         });
         applicationBtn.setEnabled(false);
 
-        Switch launchSwitch = findViewById(R.id.penalty_launch_switch);
-        launchSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {    // 패널티 실행
-                penaltyTextView.setText("Basic Penalty");
-                penaltyTextView.setTextColor(Color.RED);
-                layout.setVisibility(View.VISIBLE);
-            } else {            // 패널티 실행 안함
-                penaltyTextView.setTextColor(ContextCompat.getColor(PenaltyActivity.this, R.color.main_color));
-                penaltyTextView.setText("패널티를 두지 않습니다");
-                layout.setVisibility(View.INVISIBLE);
-                overridingSwitch.setChecked(false);
-            }
-        });
+        alertDialog();  // 다음 눌렀을 때 확인 알림
 
     }
 
     void alertDialog() {
+        String title = getIntent().getStringExtra("title");
+        String content = getIntent().getStringExtra("content");
+        String regular = getIntent().getStringExtra("regular");
+        String week_or_calender = getIntent().getStringExtra("week_or_calender");
+        String calender = getIntent().getStringExtra("calender");
+        String penalty = launchSwitch.isChecked() ? "1" : "0";
+        String override = overridingSwitch.isChecked() ? "1" : "0";
+        String penalty_list = spinner.getSelectedItem().toString();
+        String application_list = "application123";
+
+        String sun = getIntent().getStringExtra("sun");
+        String mon = getIntent().getStringExtra("mon");
+        String tue = getIntent().getStringExtra("the");
+        String wed = getIntent().getStringExtra("wed");
+        String thu = getIntent().getStringExtra("thu");
+        String fri = getIntent().getStringExtra("fri");
+        String sat = getIntent().getStringExtra("sat");
+
         AlertDialog.Builder dialog = new AlertDialog.Builder(PenaltyActivity.this);
         dialog.setTitle("알림");
         dialog.setMessage("계속하시겠습니까?");
         dialog.setPositiveButton("네", (dialog1, which) -> {
+            db = new DBHelper(this).getWritableDatabase();
+            db.execSQL("INSERT INTO todo_list (title, content, regular, week_or_calender, calender, penalty, override, penalty_list, application_list) " +
+                            "VALUES (?,?,?,?,?,?,?,?,?);",
+                    new String[]{title, content, regular, week_or_calender, calender, penalty, override, penalty_list, application_list});
+
+            if (week_or_calender.equals("1")) {
+                Cursor cursor = db.rawQuery("SELECT _id FROM todo_list ORDER BY _id DESC", null);
+                cursor.moveToFirst();
+                String _id = cursor.getString(0);
+
+                db.execSQL("INSERT INTO week_list (_id, sun, mon, tue, wed, thu, fri, sat) " +
+                        "VALUES (?,?,?,?,?,?,?,?)", new String[]{_id, sun, mon, tue, wed, thu, fri, sat});
+            }
+
+            Cursor cursor = db.rawQuery("SELECT * FROM todo_list;", null);
+            while (cursor.moveToNext()) {
+                showToast(cursor.getString(0));
+            }
+
+            cursor.close();
+            db.close();
             CreateActivity.createActivity.finish(); // createActivity 종료해서 한번에 메인으로
             finish();
         });
