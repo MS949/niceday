@@ -1,9 +1,8 @@
 package com.ms949.niceday;
 
-import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -12,59 +11,43 @@ import android.widget.TextView;
 
 public class SuccessActivity extends BaseFrameActivity {
 
-    int num;
-    int[] layoutId = new int[10000];
-    int[] titleId = new int[10000];
-    int[] dateId = new int[10000];
+    int num = 1;
+    int[] viewId = new int[127];
+    int[] titleId = new int[127];
+    int[] dateId = new int[127];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_success);
 
+        RelativeLayout successView = findViewById(R.id.custom_success_view);
+        TextView successTitle = findViewById(R.id.custom_success_title);
+        TextView successDate = findViewById(R.id.custom_success_date);
         Button backBtn = findViewById(R.id.success_back);
         backBtn.setOnClickListener(v -> finish());
 
-//      add_view.setOnClickListener(v -> {
         LinearLayout successLayout = findViewById(R.id.success_layout);
-        successLayout.addView(new Sub(getApplicationContext()));
+        successLayout.addView(new Sub(getApplicationContext(), R.id.custom_success_view));
 
-        RelativeLayout customViewLayout = findViewById(R.id.custom_view_layout);
-        TextView customViewTitle = findViewById(R.id.custom_view_title);
-        TextView customViewDate = findViewById(R.id.custom_view_date);
+        SQLiteDatabase db = new DBHelper(this).getWritableDatabase();
 
-        layoutId[num] = View.generateViewId();
-        titleId[num] = View.generateViewId();
-        dateId[num] = View.generateViewId();
-        customViewLayout.setId(layoutId[num]);
-        customViewTitle.setId(titleId[num]);
-        customViewDate.setId(dateId[num]);
+        Cursor cursor = db.rawQuery("SELECT title, calender FROM todo_list WHERE success = 1", null);
+        while (cursor.moveToNext()) {
+            viewId[num] = View.generateViewId();
+            titleId[num] = View.generateViewId();
+            dateId[num] = View.generateViewId();
+            successLayout.setId(viewId[num]);
+            successTitle.setId(titleId[num]);
+            successDate.setId(dateId[num]);
 
-        customViewTitle.setText(num + "");
-        customViewDate.setText("2020/01/" + num);
+            successTitle.setText(cursor.getString(0));
+            successDate.setText(cursor.getString(1));
+            num++;
+        }
+        cursor.close();
 
         TextView successNumber = findViewById(R.id.success_number);
         successNumber.setText(num + "개의 할 일을 완료했습니다");
-        num++;
-//      });
-
-    }
-}
-
-class Sub extends LinearLayout {
-
-    public Sub(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context);
-    }
-
-    public Sub(Context context) {
-        super(context);
-        init(context);
-    }
-
-    private void init(Context context) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.customview_success, this, true);
     }
 }

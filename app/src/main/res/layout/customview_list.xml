@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/custom_success_view"
+    android:id="@+id/custom_list_view"
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:layout_marginLeft="25dp"
@@ -10,7 +10,7 @@
     android:background="@color/main_color">
 
     <TextView
-        android:id="@+id/custom_success_title"
+        android:id="@+id/custom_list_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -20,14 +20,13 @@
         android:textStyle="bold"
         tools:text="캐드 연습" />
 
-    <TextView
-        android:id="@+id/custom_success_date"
+    <Switch
+        android:id="@+id/custom_list_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginEnd="30dp"
-        android:textSize="20sp"
-        tools:text="2021/01/01" />
+        tools:text="2:32" />
 
 </RelativeLayout>

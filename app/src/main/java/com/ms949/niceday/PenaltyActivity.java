@@ -126,12 +126,6 @@ public class PenaltyActivity extends BaseFrameActivity implements View.OnClickLi
                         "VALUES (?,?,?,?,?,?,?,?)", new String[]{_id, sun, mon, tue, wed, thu, fri, sat});
             }
 
-            Cursor cursor = db.rawQuery("SELECT * FROM todo_list;", null);
-            while (cursor.moveToNext()) {
-                showToast(cursor.getString(0));
-            }
-
-            cursor.close();
             db.close();
             CreateActivity.createActivity.finish(); // createActivity 종료해서 한번에 메인으로
             finish();

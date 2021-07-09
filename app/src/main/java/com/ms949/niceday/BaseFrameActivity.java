@@ -1,6 +1,9 @@
 package com.ms949.niceday;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,5 +28,18 @@ public class BaseFrameActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
         return spinner;
+    }
+}
+
+class Sub extends LinearLayout {
+
+    public Sub(Context context, int resource) {
+        super(context);
+        init(context, resource);
+    }
+
+    private void init(Context context, int resource) {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.customview_success, this, true);
     }
 }

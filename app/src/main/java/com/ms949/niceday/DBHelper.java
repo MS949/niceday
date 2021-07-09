@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 1;
 
     public DBHelper(@Nullable Context context) {
         super(context, "niceday_db", null, DATABASE_VERSION);
@@ -16,8 +16,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("DROP TABLE IF EXISTS todo_list");
-//      ↑ 삭제
         db.execSQL("CREATE TABLE IF NOT EXISTS todo_list" +
                 "(_id integer NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "title text," +                 // 제목
@@ -28,7 +26,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 "penalty integer," +            // 0 - 패널티 없음, 1 - 패널티 있음
                 "override integer," +           // 0 - 개별설정 없음, 1 - 개별설정 있음
                 "penalty_list integer," +       // 0 - 일정시간마다 경고, 1 - 핸드폰 제한
-                "application_list integer);");     // 제한할 어플리케이션 목록
+                "application_list integer," +   // 제한할 어플리케이션 목록
+                "success integer);");           // 0 - 진행중, 1 - 완료
 
         db.execSQL("CREATE TABLE IF NOT EXISTS week_list" +
                 "(_id integer NOT NULL," +
