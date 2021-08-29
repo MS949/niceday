@@ -1,7 +1,6 @@
 package com.ms949.niceday;
 
-import android.content.Intent;
-import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,8 +16,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 
 public class PenaltyActivity extends BaseFrameActivity implements View.OnClickListener {
-
-    SQLiteDatabase db;
 
     AlertDialog alertDialog;
     Switch overridingSwitch;
@@ -94,39 +91,25 @@ public class PenaltyActivity extends BaseFrameActivity implements View.OnClickLi
         String content = getIntent().getStringExtra("content");
         String regular = getIntent().getStringExtra("regular");
         String week_or_calender = getIntent().getStringExtra("week_or_calender");
+        String week_list = getIntent().getStringExtra("week_list");
         String calender = getIntent().getStringExtra("calender");
         String penalty = launchSwitch.isChecked() ? "1" : "0";
         String override = overridingSwitch.isChecked() ? "1" : "0";
         String penalty_list = spinner.getSelectedItem().toString();
         String application_list = "application123";
 
-        String sun = getIntent().getStringExtra("sun");
-        String mon = getIntent().getStringExtra("mon");
-        String tue = getIntent().getStringExtra("the");
-        String wed = getIntent().getStringExtra("wed");
-        String thu = getIntent().getStringExtra("thu");
-        String fri = getIntent().getStringExtra("fri");
-        String sat = getIntent().getStringExtra("sat");
-
         AlertDialog.Builder dialog = new AlertDialog.Builder(PenaltyActivity.this);
         dialog.setTitle("알림");
         dialog.setMessage("계속하시겠습니까?");
         dialog.setPositiveButton("네", (dialog1, which) -> {
-            db = new DBHelper(this).getWritableDatabase();
-            db.execSQL("INSERT INTO todo_list (title, content, regular, week_or_calender, calender, penalty, override, penalty_list, application_list) " +
-                            "VALUES (?,?,?,?,?,?,?,?,?);",
-                    new String[]{title, content, regular, week_or_calender, calender, penalty, override, penalty_list, application_list});
-
-            if (week_or_calender.equals("1")) {
-                Cursor cursor = db.rawQuery("SELECT _id FROM todo_list ORDER BY _id DESC", null);
-                cursor.moveToFirst();
-                String _id = cursor.getString(0);
-
-                db.execSQL("INSERT INTO week_list (_id, sun, mon, tue, wed, thu, fri, sat) " +
-                        "VALUES (?,?,?,?,?,?,?,?)", new String[]{_id, sun, mon, tue, wed, thu, fri, sat});
+            try (SQLiteDatabase db = new DBHelper(PenaltyActivity.this).getWritableDatabase()) {
+                db.execSQL("INSERT INTO todo_list (title, content, regular, week_or_calender, week_list, calender, penalty, override, penalty_list, application_list, success) " +
+                                "VALUES (?,?,?,?,?,?,?,?,?,?,0);",
+                        new String[]{title, content, regular, week_or_calender, week_list, calender, penalty, override, penalty_list, application_list});
+            } catch (SQLException e) {
+                showToast(e.toString());
             }
 
-            db.close();
             CreateActivity.createActivity.finish(); // createActivity 종료해서 한번에 메인으로
             finish();
         });

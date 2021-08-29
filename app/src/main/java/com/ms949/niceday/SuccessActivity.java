@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class SuccessActivity extends BaseFrameActivity {
 
-    int num = 1;
+    int num = 0;
     int[] viewId = new int[127];
     int[] titleId = new int[127];
     int[] dateId = new int[127];
@@ -28,12 +28,13 @@ public class SuccessActivity extends BaseFrameActivity {
         backBtn.setOnClickListener(v -> finish());
 
         LinearLayout successLayout = findViewById(R.id.success_layout);
-        successLayout.addView(new Sub(getApplicationContext(), R.id.custom_success_view));
 
         SQLiteDatabase db = new DBHelper(this).getWritableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT title, calender FROM todo_list WHERE success = 1", null);
         while (cursor.moveToNext()) {
+//            successLayout.addView(new DynamicInflater(getApplicationContext(), R.id.custom_success_view));
+
             viewId[num] = View.generateViewId();
             titleId[num] = View.generateViewId();
             dateId[num] = View.generateViewId();

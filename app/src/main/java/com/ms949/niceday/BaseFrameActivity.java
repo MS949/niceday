@@ -30,16 +30,3 @@ public class BaseFrameActivity extends AppCompatActivity {
         return spinner;
     }
 }
-
-class Sub extends LinearLayout {
-
-    public Sub(Context context, int resource) {
-        super(context);
-        init(context, resource);
-    }
-
-    private void init(Context context, int resource) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.customview_success, this, true);
-    }
-}

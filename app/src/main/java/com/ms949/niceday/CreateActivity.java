@@ -89,7 +89,7 @@ public class CreateActivity extends BaseFrameActivity implements View.OnClickLis
                 DatePickerDialog datePickerDialog = new DatePickerDialog(CreateActivity.this, (view, year, month, dayOfMonth) -> {
                     if (regularBtn.isChecked()) { // 단번
                         TimePickerDialog timePickerDialog = new TimePickerDialog(CreateActivity.this, (view1, hourOfDay, minute) -> {
-                            calenderEditText.setText(String.format("%d / %d / %d %02d : %02d", year, month + 1, dayOfMonth, hourOfDay, minute));
+                            calenderEditText.setText(String.format("%d / %d / %d  %02d시 %02d분", year, month + 1, dayOfMonth, hourOfDay, minute));
                         }, 0, 0, false);
                         timePickerDialog.setCancelable(false);
                         timePickerDialog.show();
@@ -127,19 +127,18 @@ public class CreateActivity extends BaseFrameActivity implements View.OnClickLis
 
                 Intent intent = new Intent(CreateActivity.this, PenaltyActivity.class);
 
+                String temp = "0";
+                for (int i = 0; i < btn.length; i++) {
+                    if (btn[i].isChecked()) {
+                        temp = i + 1 + "";
+                    }
+                }
                 intent.putExtra("title", setTitleEditText.getText().toString());
                 intent.putExtra("content", regularEditText.getText().toString());
                 intent.putExtra("regular", regularBtn.isChecked() ? "1" : "0");
                 intent.putExtra("week_or_calender", weekOrCalenderSwitch.isChecked() ? "1" : "0");
                 intent.putExtra("calender", calenderEditText.getText().toString());
-
-                intent.putExtra("sun", btn[0].isChecked() ? "1" : "0");
-                intent.putExtra("mon", btn[1].isChecked() ? "1" : "0");
-                intent.putExtra("tue", btn[2].isChecked() ? "1" : "0");
-                intent.putExtra("wed", btn[3].isChecked() ? "1" : "0");
-                intent.putExtra("thu", btn[4].isChecked() ? "1" : "0");
-                intent.putExtra("fri", btn[5].isChecked() ? "1" : "0");
-                intent.putExtra("sat", btn[6].isChecked() ? "1" : "0");
+                intent.putExtra("week_list", temp);
 
                 startActivity(intent);
                 return;

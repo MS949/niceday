@@ -1,6 +1,7 @@
 
 package com.ms949.niceday;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -9,16 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
 public class ListFragment extends BaseFrameFragment implements View.OnClickListener {
 
-    int num;
-    int[] viewId = new int[127];
-    int[] titleId = new int[127];
-    int[] switchId = new int[127];
+    //    RelativeLayout listView;
+    TextView listTitle;
+    Switch listSwitch;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -29,29 +28,57 @@ public class ListFragment extends BaseFrameFragment implements View.OnClickListe
         Button btn2 = view.findViewById(R.id.list_create_btn);
         btn2.setOnClickListener(this);
 
-        RelativeLayout listView = view.findViewById(R.id.custom_list_view);
-        TextView listTitle = view.findViewById(R.id.custom_list_title);
-        Switch listSwitch = view.findViewById(R.id.custom_list_switch);
-
-        LinearLayout successLayout = view.findViewById(R.id.list_layout);
-        successLayout.addView(new Sub(getContext(), R.id.custom_list_view));
+        LinearLayout linearRoot = view.findViewById(R.id.list_root);
+//        LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        View root = layoutInflater.inflate(R.layout.customview_list, linearRoot, true);
 
         SQLiteDatabase db = new DBHelper(getContext()).getWritableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT title, calender FROM todo_list WHERE success = 0", null);
-        while (cursor.moveToNext()) {
-            viewId[num] = View.generateViewId();
-            titleId[num] = View.generateViewId();
-            switchId[num] = View.generateViewId();
-            listView.setId(viewId[num]);
-            listTitle.setId(titleId[num]);
-            listSwitch.setId(switchId[num]);
+        try (Cursor cursor = db.rawQuery("SELECT title, week_or_calender, week_list, calender FROM todo_list WHERE success = 0", null)) {
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                for (int i = 0; i < cursor.getCount(); i++) {
+                    linearRoot.addView(new Sub(getContext()));
+                    showToast("cursor : " + i);
 
-            listTitle.setText(cursor.getString(0));
-            listSwitch.setText(cursor.getString(1));
-            num++;
+                    listTitle = view.findViewById(R.id.custom_list_title);
+                    listSwitch = view.findViewById(R.id.custom_list_switch);
+
+                    listTitle.setText(cursor.getString(0));
+
+                    if (cursor.getString(1).equals("0")) {  // 달력이면
+                        listSwitch.setText(cursor.getString(3));
+                    } else {                                           // 일주일이면
+                        switch (cursor.getString(2)) {
+                            case "1":
+                                listSwitch.setText("일요일");
+                                break;
+                            case "2":
+                                listSwitch.setText("월요일");
+                                break;
+                            case "3":
+                                listSwitch.setText("화요일");
+                                break;
+                            case "4":
+                                listSwitch.setText("수요일");
+                                break;
+                            case "5":
+                                listSwitch.setText("목요일");
+                                break;
+                            case "6":
+                                listSwitch.setText("금요일");
+                                break;
+                            case "7":
+                                listSwitch.setText("토요일");
+                                break;
+                        }
+                    }
+                    cursor.moveToNext();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        cursor.close();
 
         return view;
     }
@@ -65,5 +92,14 @@ public class ListFragment extends BaseFrameFragment implements View.OnClickListe
             case R.id.list_create_btn:
                 showActivity(CreateActivity.class);
         }
+    }
+}
+
+class Sub extends LinearLayout {
+    public Sub(Context context) {
+        super(context);
+
+        LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        layoutInflater.inflate(R.layout.customview_list, this, true);
     }
 }

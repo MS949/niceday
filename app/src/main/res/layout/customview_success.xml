@@ -18,7 +18,8 @@
         android:textColor="@color/back_ground_color"
         android:textSize="30sp"
         android:textStyle="bold"
-        tools:text="캐드 연습" />
+        tools:text="캐드 연습"
+        />
 
     <TextView
         android:id="@+id/custom_success_date"
