@@ -1,6 +1,8 @@
 package com.ms949.niceday;
 
 import android.content.Intent;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -14,6 +16,10 @@ public class BaseFrameFragment extends Fragment {
 
     int getDate(String pattern) {
         return Integer.parseInt(new SimpleDateFormat(pattern).format(new Date(System.currentTimeMillis())));
+    }
+
+    int getPixel(int dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getContext().getResources().getDisplayMetrics());
     }
 
     void showToast(String msg) {
